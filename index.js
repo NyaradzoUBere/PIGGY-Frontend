@@ -1,6 +1,7 @@
 const baseURL = "http://localhost:3000"
 const loginURL = `${baseURL}/login`
 const loginForm = document.querySelector("#login")
+const userURL = `${baseURL}/users`
 
 loginForm.addEventListener("submit", authentication)
 
@@ -27,12 +28,15 @@ function authentication(event) {
         })
     
     if (localStorage.token) {
-        redirect()
+        fetch(loginURL)
+            .then(response => response.json())
+            .then(redirect)
+        // redirect()
     }
 
     event.target.reset()
 }
 
-function redirect() {
-    window.location.href = `show.html`
+function redirect(login) {
+    window.location.href = `show.html?id=${login.username}`
 }
