@@ -3,9 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="show.js" defer></script>
+    <title>Budget Detail</title>
 </head>
 <body>
+    <header>
+        <h1>Your Piggy Bank</h1>
+        <img class = "pig-face" src= "images/silhouette-face-cute-pig-animal-farm-icon-vector-13827374.jpg">
+        
+        <form class = "expenses">
+            <input type="text" name="item" id="item" placeholder="Item">
+            <input type="number" name="amount" id="amount" placeholder="Amount">
+            <input type="submit" value="Log Expense">
+        </form> 
+    </header>
+    <main>
+        <div class = "expenses" id= "expense-list"></div>
+        <div class="graph"></div>
+        <div class = "articles">
+            <h2>Increase Your Piggy Bank With These Articles</h2>
+        </div>
+    </main>
+    <footer>
+
+    </footer>
     
 </body>
 </html>
