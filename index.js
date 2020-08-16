@@ -25,18 +25,10 @@ function authentication(event) {
         .then(result => {
             console.log(result.token)
             localStorage.setItem("token", result.token)
+            redirect(result)
         })
-    
-    if (localStorage.token) {
-        fetch(loginURL)
-            .then(response => response.json())
-            .then(redirect)
-        // redirect()
-    }
-
-    event.target.reset()
 }
 
-function redirect(login) {
-    window.location.href = `show.html?id=${login.username}`
+function redirect(result){
+    window.location.href = `show.html?id=${result.user.id}`
 }

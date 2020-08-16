@@ -7,3 +7,4 @@ let id = params.get('id')
 
 fetch(userURL)
     .then(response => response.json())
+    // .then(console.log)
