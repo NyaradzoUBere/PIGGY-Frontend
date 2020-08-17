@@ -48,6 +48,11 @@ table {
 }
 
 /* END OF MYERS RESET */
+/* 
+header {
+    display: inline-block;
+    text-align: left;
+} */
 
 body {
     background-image: url("/images/piggy_bank_background.jpg");
@@ -69,6 +74,22 @@ h2 {
     color: black;
     font-size: 30px;
     letter-spacing: 7px;
+}
+
+h3 {
+    font-family: serif;
+    color: black;
+    font-size: 20px;
+    letter-spacing: 7px;
+    margin: 10px 350px;
+
+}
+
+h3:hover {
+    border: 2px solid black;
+    border-radius: 3px;
+    background-color: rgb(252, 231, 234);
+    cursor: pointer;
 }
 
 form {
