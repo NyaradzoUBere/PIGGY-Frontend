@@ -130,7 +130,7 @@ function addChart(user) {
     
             // create pie chart with passed data
             let chart = anychart.pie(data);
-    
+
             // set chart radius
             chart
               .innerRadius('65%')
@@ -175,6 +175,7 @@ function addChart(user) {
               .fill(function () {
                 return anychart.color.lighten('#6f3448', 0.55);
               });
+
     
             // set selected outline settings
             chart
@@ -187,11 +188,17 @@ function addChart(user) {
     
             // set container id for the chart
             chart.container('container');
+            document.getElementById("container").style.background="#fae2e6";
+            
             // initiate chart drawing
             chart.draw();
-          });
 
-}
+            // Set chart background color
+            chart.background("pink 0.1");
+            document.getElementById("container").style.background="#fae2e6"
+        
+          });
+        }
 
 fetch(articleURL)
     .then(response => response.json())
@@ -224,6 +231,8 @@ function sumExpenses(user){
     })
     expenseSum = expense_array.reduce((total, amount) => total + amount);
     showTotalExpenses()
+
+
 }
 
 function showTotalExpenses() {

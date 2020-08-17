@@ -48,6 +48,7 @@ table {
 
 /* END OF MYERS RESET */
 
+
 h1 {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     color: black;
@@ -131,13 +132,6 @@ p {
     align-self: center;
     margin-left: 120px;
 }
-
-
-/* .anychart-tooltip {
-    border-radius: 23px;
-    background-color: rgba(255, 160, 0, 0.7);
-    font-family: Courier, Helvetica, Arial, 'sans-serif';
-} */
 
 article img{
     min-width: 300px;
