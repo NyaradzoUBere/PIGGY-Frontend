@@ -54,6 +54,11 @@ function createExpense(){
                 amount: expenseAmount
             })
         })
+        // .then(expense => {
+        //     const newTotalExpenseH3 = document.getElementById("total-expense-number")
+        //     parseInt(newTotalExpenseH3).innerText = ++ expense.amount
+        //     // totalExpensesDiv.append(totalExpenseH3)
+        // })
     })
     // persistExpense()
 }
@@ -93,14 +98,6 @@ function showArticles(articles) {
 
 }
 
-// function sumExpenses(user){
-//     user.expenses.map(expense => {
-//         expense.amount.reduce((sum, num) =>
-//             console.log(sum + num)
-//           );
-//     })
-// }
-
 function sumExpenses(user){
     expense_array = []
     user.expenses.map(expense => {
@@ -109,4 +106,14 @@ function sumExpenses(user){
     console.log(expense_array)
     expenseSum = expense_array.reduce((total, amount) => total + amount);
     console.log(expenseSum)
+    showTotalExpenses()
+}
+
+function showTotalExpenses() {
+    const totalExpensesDiv = document.querySelector(".total-expenses")
+    totalExpenseH3 = document.createElement("h3")
+    totalExpenseH3.id = "total-expense-number"
+    totalExpenseH3.innerText = `Total Expenses: ${expenseSum}`
+    totalExpensesDiv.append(totalExpenseH3)
+    
 }
