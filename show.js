@@ -60,3 +60,27 @@ function persistExpense(user) {
         divExpenses.append(expenseListElement)
     })
 }
+
+fetch(articleURL)
+    .then(response => response.json())
+    .then(showArticles)
+
+function showArticles(articles) {
+    const articleDiv = document.querySelector(".articles")
+    articles.forEach(article => {
+        const card = document.createElement("article")
+        card.className = "article-card"
+        const title = document.createElement("h3")
+        const image = document.createElement("img")
+        image.onclick = function() {
+            window.location.href = `${article.url}`;
+          };
+
+        title.innerHTML = `<a href = "${article.url}" target = "_blank">${article.title}</a>`
+        image.src = article.image
+
+        card.append(image, title)
+        articleDiv.append(card)
+    })
+
+}
