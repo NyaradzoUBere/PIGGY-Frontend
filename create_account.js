@@ -21,7 +21,13 @@ function createAccount(event) {
             username,
             password
             })
+        }).then(response => response.json())
+        .then(result => {
+            redirect(result)
         })
-    
 }
-// createAccount()
+
+function redirect(result){
+    window.location.href = `show.html?id=${result.id}`
+}
+
