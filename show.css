@@ -110,13 +110,25 @@ p {
     padding: 20px 20px;
 }
 
-div.graph {
+.graph {
     position: relative;
     background-color: rgb(250, 226, 230);
     height: 100px;
     width: 100%;
     height: 800px;
 }
+
+#container{
+    width: 50%;
+    height: 50%;
+    background-color: rgb(250, 226, 230);
+}
+
+/* .anychart-tooltip {
+    border-radius: 23px;
+    background-color: rgba(255, 160, 0, 0.7);
+    font-family: Courier, Helvetica, Arial, 'sans-serif';
+} */
 
 article img{
     min-width: 300px;
@@ -156,6 +168,7 @@ h3 {
     max-width: 300px;
     letter-spacing: 2px;
 }
+
 .article-card {
     padding: 5px;
     margin: 30px 30px;

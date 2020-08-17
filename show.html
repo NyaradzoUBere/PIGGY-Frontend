@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="show.css">
     <script src="show.js" defer></script>
+    <script src="https://cdn.anychart.com/js/8.0.1/anychart-core.min.js" defer></script>
+    <script src="https://cdn.anychart.com/js/8.0.1/anychart-pie.min.js" defer></script>
     <title>Budget Detail</title>
 </head>
 <body>
@@ -22,7 +24,9 @@
     <main>
         <div class = "expenses" id= "expense-list"></div>
         <div class = "total-expenses" id= "total-expenses"></div>
-        <div class="graph"></div>
+        <div class="graph">
+            <div id="container"></div>
+        </div>
         <div class = "articles">
             <h2>Increase Your Piggy Bank With These Articles</h2>
         </div>

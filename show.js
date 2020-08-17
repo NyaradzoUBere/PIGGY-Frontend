@@ -13,6 +13,7 @@ fetch(`${userURL}/${id}`)
         persistExpense(user)
         // console.log("expense:",user.expenses)
         sumExpenses(user)
+        addChart(user)
     })
 
     .then(createExpense)
@@ -41,6 +42,7 @@ function createExpense(){
         divExpenses.append(expenseListElement)
 
         event.target.reset()
+        
 
         fetch(expenseURL, {
             method: "POST",
@@ -71,7 +73,41 @@ function persistExpense(user) {
         expenseListElement.innerText = `${expense.item}: $ ${expense.amount}`
         console.log(expenseListElement)
         divExpenses.append(expenseListElement)
+        data = [{
+            x: `${expense.item}, value: ${expense.amount}`
+        }]
     })
+}
+
+function addChart(user){
+    console.log("user expenses:", user.expenses)
+    let data = []
+    user.expenses.forEach(expense => {
+        data.push({
+            x: `${expense.item}`, value: `${expense.amount}`
+        })
+    })
+    console.log(data)
+    anychart.onDocumentReady(function() {
+        // create the chart
+        let chart = anychart.pie();
+      
+        // set the chart title
+        chart.title("Your Total Expense Breakdown");
+      
+        // add the data
+        chart.data(data);
+      
+        // display the chart in the container
+        chart.container('container');
+        chart.draw();
+        // chart.tooltip().background().fill("#fae2e6")
+        // let background = chart.tooltip().background();
+        // background.fill("#fae2e6");
+        chart.background("pink 0.1");
+        document.getElementById("container").style.background="#fae2e6"
+      
+      });
 }
 
 fetch(articleURL)
@@ -103,9 +139,7 @@ function sumExpenses(user){
     user.expenses.map(expense => {
         (expense_array.push(expense.amount))
     })
-    console.log(expense_array)
     expenseSum = expense_array.reduce((total, amount) => total + amount);
-    console.log(expenseSum)
     showTotalExpenses()
 }
 
@@ -115,5 +149,4 @@ function showTotalExpenses() {
     totalExpenseH3.id = "total-expense-number"
     totalExpenseH3.innerText = `Total Expenses: ${expenseSum}`
     totalExpensesDiv.append(totalExpenseH3)
-    
 }
