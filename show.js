@@ -4,29 +4,32 @@ const userURL = `${baseURL}/users`
 const articleURL = `${baseURL}/articles`
 let params = new URLSearchParams(window.location.search)
 let id = params.get('id')
+const totalExpensesDiv = document.querySelector(".total-expenses")
 // const divExpenses = document.getElementById("expense-list")
-
+const expenseForm = document.querySelector(".expenses")
+let chartData = []
+let data
 
 fetch(`${userURL}/${id}`)
     .then(response => response.json())
     .then(user => {
         persistExpense(user)
-        // console.log("expense:",user.expenses)
-        sumExpenses(user)
+        if ((user.expenses)[0]) {
+            sumExpenses(user)
+        }else{
+            totalExpenseH3 = document.createElement("h3")
+            totalExpenseH3.id = "total-expense-number"
+            totalExpenseH3.innerText = `Total Expenses: ${0}`
+            totalExpensesDiv.append(totalExpenseH3)
+
+        }
         addChart(user)
     })
 
     .then(createExpense)
     // .then(totalSpent)
 
-// function displayUsername(user){
-//     const h1 = document.querySelector(".user-header")
-//     h1.innerText = `${user.username}'s Piggy Bank`
-//     document.body.appendChild(h1)
-// }
-
 function createExpense(){
-    const expenseForm = document.querySelector(".expenses")
     expenseForm.addEventListener("submit", (event) => {
         event.preventDefault()
         const formData = new FormData(event.target)
@@ -35,12 +38,22 @@ function createExpense(){
 
         const divExpenses = document.getElementById("expense-list")
 
+
+
         const expenseListElement = document.createElement("p")
 
         expenseListElement.innerText = `${expenseItem}: $ ${expenseAmount}`
 
         divExpenses.append(expenseListElement)
+        
+        let totalExpense = parseInt(totalExpensesDiv.querySelector("#total-expense-number").innerText.split(": ")[1])
 
+        totalExpensesDiv.querySelector("#total-expense-number").innerText = `Total Expenses: ${totalExpense + parseInt(expenseAmount)}`
+
+        data.append([
+            `${expenseItem}`, `${expenseAmount}`]
+        )
+        
         event.target.reset()
         
 
@@ -56,13 +69,7 @@ function createExpense(){
                 amount: expenseAmount
             })
         })
-        // .then(expense => {
-        //     const newTotalExpenseH3 = document.getElementById("total-expense-number")
-        //     parseInt(newTotalExpenseH3).innerText = ++ expense.amount
-        //     // totalExpensesDiv.append(totalExpenseH3)
-        // })
     })
-    // persistExpense()
 }
 
 function persistExpense(user) {
@@ -113,20 +120,18 @@ function persistExpense(user) {
 // }
 
 function addChart(user) {
-
-    let chartData = []
     user.expenses.forEach(expense => {
         chartData.push([
             `${expense.item}`, `${expense.amount}`]
         )
     })
-    console.log(chartData)
+    // console.log(chartData)
 
     anychart.onDocumentReady(function () {
         // set chart theme
     anychart.theme('pastel');
             // create data set
-            let data = anychart.data.set(chartData)
+            data = anychart.data.set(chartData)
     
             // create pie chart with passed data
             let chart = anychart.pie(data);
@@ -194,7 +199,7 @@ function addChart(user) {
             chart.draw();
 
             // Set chart background color
-            chart.background("pink 0.1");
+            chart.background("pink 0.001");
             document.getElementById("container").style.background="#fae2e6"
         
           });
@@ -236,9 +241,14 @@ function sumExpenses(user){
 }
 
 function showTotalExpenses() {
-    const totalExpensesDiv = document.querySelector(".total-expenses")
     totalExpenseH3 = document.createElement("h3")
     totalExpenseH3.id = "total-expense-number"
     totalExpenseH3.innerText = `Total Expenses: ${expenseSum}`
     totalExpensesDiv.append(totalExpenseH3)
+
+    console.log(totalExpenseH3.innerText)
+}
+
+function updateChart(){
+
 }
