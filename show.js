@@ -16,6 +16,12 @@ fetch(`${userURL}/${id}`)
     .then(createExpense)
     // .then(totalSpent)
 
+// function displayUsername(user){
+//     const h1 = document.querySelector(".user-header")
+//     h1.innerText = `${user.username}'s Piggy Bank`
+//     document.body.appendChild(h1)
+// }
+
 function createExpense(){
     const expenseForm = document.querySelector(".expenses")
     expenseForm.addEventListener("submit", (event) => {
