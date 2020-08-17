@@ -79,35 +79,118 @@ function persistExpense(user) {
     })
 }
 
-function addChart(user){
-    console.log("user expenses:", user.expenses)
-    let data = []
+// function addChart(user){
+//     console.log("user expenses:", user.expenses)
+//     let data = []
+//     user.expenses.forEach(expense => {
+//         data.push({
+//             x: `${expense.item}`, value: `${expense.amount}`
+//         })
+//     })
+//     console.log(data)
+//     anychart.onDocumentReady(function() {
+//         // create the chart
+//         let chart = anychart.pie();
+      
+//         // set the chart title
+//         chart.title("Your Total Expense Breakdown");
+      
+//         // add the data
+//         chart.data(data);
+      
+//         // display the chart in the container
+//         chart.container('container');
+//         chart.draw();
+//         // chart.tooltip().background().fill("#fae2e6")
+//         // let background = chart.tooltip().background();
+//         // background.fill("#fae2e6");
+//         chart.background("pink 0.1");
+//         document.getElementById("container").style.background="#fae2e6"
+        
+//         // chart.tooltip().fontColor("gold")
+      
+//       });
+// }
+
+function addChart(user) {
+
+    let chartData = []
     user.expenses.forEach(expense => {
-        data.push({
-            x: `${expense.item}`, value: `${expense.amount}`
-        })
+        chartData.push([
+            `${expense.item}`, `${expense.amount}`]
+        )
     })
-    console.log(data)
-    anychart.onDocumentReady(function() {
-        // create the chart
-        let chart = anychart.pie();
-      
-        // set the chart title
-        chart.title("Your Total Expense Breakdown");
-      
-        // add the data
-        chart.data(data);
-      
-        // display the chart in the container
-        chart.container('container');
-        chart.draw();
-        // chart.tooltip().background().fill("#fae2e6")
-        // let background = chart.tooltip().background();
-        // background.fill("#fae2e6");
-        chart.background("pink 0.1");
-        document.getElementById("container").style.background="#fae2e6"
-      
-      });
+    console.log(chartData)
+
+    anychart.onDocumentReady(function () {
+        // set chart theme
+    anychart.theme('pastel');
+            // create data set
+            let data = anychart.data.set(chartData)
+    
+            // create pie chart with passed data
+            let chart = anychart.pie(data);
+    
+            // set chart radius
+            chart
+              .innerRadius('65%')
+              // set value for the exploded slices
+              .explode(25);
+    
+            // create standalone label and set settings
+            let label = anychart.standalones.label();
+            label
+              .enabled(true)
+              .text('Your Expense Breakdown')
+              .width('100%')
+              .height('100%')
+              .adjustFontSize(true, true)
+              .minFontSize(10)
+              .maxFontSize(25)
+              .fontColor('#60727b')
+              .position('center')
+              .anchor('center')
+              .hAlign('center')
+              .vAlign('middle');
+    
+            // set label to center content of chart
+            chart.center().content(label);
+    
+            // create range color palette with color ranged
+            let palette = anychart.palettes.rangeColors();
+            palette.items([{ color: '#c26364' }, { color: '#dba869' }]);
+            // set chart palette
+            chart.palette(palette);
+    
+            // set hovered settings
+            chart.hovered().fill('#6f3448');
+    
+            // set selected settings
+            chart.selected().fill('#ff6e40');
+    
+            // set hovered outline settings
+            chart
+              .hovered()
+              .outline()
+              .fill(function () {
+                return anychart.color.lighten('#6f3448', 0.55);
+              });
+    
+            // set selected outline settings
+            chart
+              .selected()
+              .outline()
+              .offset(5)
+              .fill(function () {
+                return anychart.color.lighten('#ff6e40', 0.25);
+              });
+    
+            // set container id for the chart
+            chart.container('container');
+            // initiate chart drawing
+            chart.draw();
+          });
+
 }
 
 fetch(articleURL)
