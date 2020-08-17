@@ -163,7 +163,7 @@ function addChart(user) {
     
             // create range color palette with color ranged
             let palette = anychart.palettes.rangeColors();
-            palette.items([{ color: '#c26364' }, { color: '#dba869' }]);
+            palette.items([{ color: '#e5bbed' }, { color: '#ff6e40' }]);
             // set chart palette
             chart.palette(palette);
     

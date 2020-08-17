@@ -14,7 +14,7 @@
 * [License](#license)
 
 ## About Piggy
-Piggy is ...
+Piggy is an expense tracker for users. Users get some insight about what their "piggy bank" is being spent on through a list breakdown of their expenses along with a chart breakdown of total expenses. Resources are also provided to the user to increase their financial literacy and budgetting habits.
 
 
 ## Piggy Walkthrough Video
@@ -40,7 +40,9 @@ HTML5 / CSS3
     Inser code here
 ```
 ## Piggy Features
-* 
+* Input and track expenses
+* Visualize expenses through a colored pie chart
+* Provide finance and budgetting resources
 
 
 To-Do List:
@@ -52,7 +54,7 @@ To-Do List:
 This app is built to carry out the CRUD framework
 
 ## Why Piggy?
-I created this app because...
+I created this app because of my personal affinity for finance. Being a recent graduate of both finance and accounting, I constantly think about the way I am breaking out my daily, weekly, and monthly income. This app serves to be a beginners resource for those just now thinking about how finance plays into their lives and ways to imporve financial habits.
 
 ## Contact
 Created by [Nyaradzo Bere](http://www.linkedin.com/in/nyaradzo-bere)
