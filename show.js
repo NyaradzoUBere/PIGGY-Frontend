@@ -11,6 +11,8 @@ fetch(`${userURL}/${id}`)
     .then(response => response.json())
     .then(user => {
         persistExpense(user)
+        // console.log("expense:",user.expenses)
+        sumExpenses(user)
     })
 
     .then(createExpense)
@@ -89,4 +91,22 @@ function showArticles(articles) {
         articleDiv.append(card)
     })
 
+}
+
+// function sumExpenses(user){
+//     user.expenses.map(expense => {
+//         expense.amount.reduce((sum, num) =>
+//             console.log(sum + num)
+//           );
+//     })
+// }
+
+function sumExpenses(user){
+    expense_array = []
+    user.expenses.map(expense => {
+        (expense_array.push(expense.amount))
+    })
+    console.log(expense_array)
+    expenseSum = expense_array.reduce((total, amount) => total + amount);
+    console.log(expenseSum)
 }
