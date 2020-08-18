@@ -19,7 +19,7 @@ fetch(`${userURL}/${id}`)
         }else{
             totalExpenseH3 = document.createElement("h3")
             totalExpenseH3.id = "total-expense-number"
-            totalExpenseH3.innerText = `Total Expenses: ${0}`
+            totalExpenseH3.innerText = `Total Expenses: $ ${0}`
             totalExpensesDiv.append(totalExpenseH3)
 
         }
@@ -243,7 +243,7 @@ function sumExpenses(user){
 function showTotalExpenses() {
     totalExpenseH3 = document.createElement("h3")
     totalExpenseH3.id = "total-expense-number"
-    totalExpenseH3.innerText = `Total Expenses: ${expenseSum}`
+    totalExpenseH3.innerText = `Total Expenses: $ ${expenseSum}`
     totalExpensesDiv.append(totalExpenseH3)
 
     console.log(totalExpenseH3.innerText)

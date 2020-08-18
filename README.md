@@ -27,7 +27,7 @@ HTML5 / CSS3
 
 ## Setup
 
-1. To run this project, please go to the [Piggy Backend repo:](https://github.com/NyaradzoUBere/piggy-backend)
+1. To run this project, please go to the [Piggy Backend repo:](https://github.com/NyaradzoUBere/Piggy-WebApp-Frontend)
 1. Run ~ lite-server in your front end directory
 1. [Click here!](http://localhost:3001)
 
