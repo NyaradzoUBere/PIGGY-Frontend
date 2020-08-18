@@ -37,7 +37,6 @@ function createExpense(){
         const expenseAmount = formData.get("amount")
 
         const divExpenses = document.getElementById("expense-list")
-
         const expenseListElement = document.createElement("p")
 
         expenseListElement.innerText = `${expenseItem}: $ ${expenseAmount}`
@@ -46,7 +45,7 @@ function createExpense(){
         
         let totalExpense = parseInt(totalExpensesDiv.querySelector("#total-expense-number").innerText.split(": $ ")[1])
 
-        totalExpensesDiv.querySelector("#total-expense-number").innerText = `Total Expenses: ${totalExpense + parseInt(expenseAmount)}`
+        totalExpensesDiv.querySelector("#total-expense-number").innerText = `Total Expenses: $ ${totalExpense + parseInt(expenseAmount)}`
 
         data.append([
             `${expenseItem}`, `${expenseAmount}`]
@@ -233,8 +232,6 @@ function sumExpenses(user){
     })
     expenseSum = expense_array.reduce((total, amount) => total + amount);
     showTotalExpenses()
-
-
 }
 
 function showTotalExpenses() {
