@@ -38,15 +38,13 @@ function createExpense(){
 
         const divExpenses = document.getElementById("expense-list")
 
-
-
         const expenseListElement = document.createElement("p")
 
         expenseListElement.innerText = `${expenseItem}: $ ${expenseAmount}`
 
         divExpenses.append(expenseListElement)
         
-        let totalExpense = parseInt(totalExpensesDiv.querySelector("#total-expense-number").innerText.split(": ")[1])
+        let totalExpense = parseInt(totalExpensesDiv.querySelector("#total-expense-number").innerText.split(": $ ")[1])
 
         totalExpensesDiv.querySelector("#total-expense-number").innerText = `Total Expenses: ${totalExpense + parseInt(expenseAmount)}`
 
@@ -55,7 +53,6 @@ function createExpense(){
         )
         
         event.target.reset()
-        
 
         fetch(expenseURL, {
             method: "POST",
@@ -247,8 +244,4 @@ function showTotalExpenses() {
     totalExpensesDiv.append(totalExpenseH3)
 
     console.log(totalExpenseH3.innerText)
-}
-
-function updateChart(){
-
 }
