@@ -22,12 +22,9 @@ function createAccount(event) {
             password
             })
         }).then(response => response.json())
-        .then(result => {
-            redirect(result)
-        })
+        .then(redirect)
 }
 
-function redirect(result){
-    window.location.href = `show.html?id=${result.id}`
+function redirect(){
+    window.location.href = `index.html`
 }
-
