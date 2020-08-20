@@ -9,6 +9,7 @@ const totalExpensesDiv = document.querySelector(".total-expenses")
 const expenseForm = document.querySelector(".expenses")
 let chartData = []
 let data
+logOut()
 
 fetch(`${userURL}/${id}`)
     .then(response => response.json())
@@ -82,46 +83,12 @@ function persistExpense(user) {
     })
 }
 
-// function addChart(user){
-//     console.log("user expenses:", user.expenses)
-//     let data = []
-//     user.expenses.forEach(expense => {
-//         data.push({
-//             x: `${expense.item}`, value: `${expense.amount}`
-//         })
-//     })
-//     console.log(data)
-//     anychart.onDocumentReady(function() {
-//         // create the chart
-//         let chart = anychart.pie();
-      
-//         // set the chart title
-//         chart.title("Your Total Expense Breakdown");
-      
-//         // add the data
-//         chart.data(data);
-      
-//         // display the chart in the container
-//         chart.container('container');
-//         chart.draw();
-//         // chart.tooltip().background().fill("#fae2e6")
-//         // let background = chart.tooltip().background();
-//         // background.fill("#fae2e6");
-//         chart.background("pink 0.1");
-//         document.getElementById("container").style.background="#fae2e6"
-        
-//         // chart.tooltip().fontColor("gold")
-      
-//       });
-// }
-
 function addChart(user) {
     user.expenses.forEach(expense => {
         chartData.push([
             `${expense.item}`, `${expense.amount}`]
         )
     })
-    // console.log(chartData)
 
     anychart.onDocumentReady(function () {
         // set chart theme
@@ -241,4 +208,34 @@ function showTotalExpenses() {
     totalExpensesDiv.append(totalExpenseH3)
 
     console.log(totalExpenseH3.innerText)
+}
+
+function logOut() {
+    const logOut = document.querySelector("#log-out")
+    logOut.addEventListener("click", logOutRedirect)
+}
+
+function logOutRedirect() {
+        window.location.href = "index.html"
+        // console.log("click")
+}
+
+clearExpensesOption()
+
+function clearExpensesOption(){
+    const nav = document.querySelector(".nav")
+    const clearExpensesListElement = document.createElement("li")
+    clearExpensesListElement.id = "clear-expenses"
+    clearExpensesListElement.innerText = "Clear My Expenses"
+    nav.append(clearExpensesListElement)
+    clearExpensesEvent()
+}
+
+function clearExpensesEvent() {
+    const clearExpensesListElement = document.querySelector("#clear-expenses")
+    clearExpensesListElement.addEventListener("click", clearExpenses)
+}
+
+function clearExpenses() {
+
 }
