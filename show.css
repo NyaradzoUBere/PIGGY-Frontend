@@ -186,3 +186,26 @@ h3 {
     transform: scale(1.05);
     cursor: pointer;
 }
+
+div.title-nav{
+    display: inline-block;
+}
+ul{
+    display: inline-block;
+    text-align: right;
+    /* padding-right: 20px; */
+    margin-left: 350px;
+}
+
+li{
+    margin-left: 50px;
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    letter-spacing: 3px;
+    display: inline-block;
+    /* text-align: right; */
+}
+li:hover{
+    background-color: rgb(250, 226, 230);
+    cursor: pointer;
+}
