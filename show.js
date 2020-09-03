@@ -18,11 +18,7 @@ fetch(`${userURL}/${id}`)
         if ((user.expenses)[0]) {
             sumExpenses(user)
         }else{
-            totalExpenseH3 = document.createElement("h3")
-            totalExpenseH3.id = "total-expense-number"
-            totalExpenseH3.innerText = `Total Expenses: $ ${0}`
-            totalExpensesDiv.append(totalExpenseH3)
-
+            noTotalExpense()
         }
         addChart(user)
     })
@@ -30,6 +26,12 @@ fetch(`${userURL}/${id}`)
     .then(createExpense)
     // .then(totalSpent)
 
+function noTotalExpense() {
+    totalExpenseH3 = document.createElement("h3")
+    totalExpenseH3.id = "total-expense-number"
+    totalExpenseH3.innerText = `Total Expenses: $ ${0}`
+    totalExpensesDiv.append(totalExpenseH3)
+}
 function createExpense(){
     expenseForm.addEventListener("submit", (event) => {
         event.preventDefault()
@@ -41,30 +43,35 @@ function createExpense(){
         const expenseListElement = document.createElement("p")
 
         expenseListElement.innerText = `${expenseItem}: $ ${expenseAmount}`
-
         divExpenses.append(expenseListElement)
         
-        let totalExpense = parseInt(totalExpensesDiv.querySelector("#total-expense-number").innerText.split(": $ ")[1])
-
-        totalExpensesDiv.querySelector("#total-expense-number").innerText = `Total Expenses: $ ${totalExpense + parseInt(expenseAmount)}`
+        expenseAutoUpdate(expenseAmount)
 
         data.append([
             `${expenseItem}`, `${expenseAmount}`]
         )
         
         event.target.reset()
+        updateExpensesBackend(expenseItem, expenseAmount)
+    })
+}
 
-        fetch(expenseURL, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify({
-                user_id: id,
-                item: expenseItem,
-                amount: expenseAmount
-            })
+function expenseAutoUpdate(expenseAmount) {
+    let totalExpense = parseInt(totalExpensesDiv.querySelector("#total-expense-number").innerText.split(": $ ")[1])
+    totalExpensesDiv.querySelector("#total-expense-number").innerText = `Total Expenses: $ ${totalExpense + parseInt(expenseAmount)}`
+}
+
+function updateExpensesBackend(item, amount) {
+    fetch(expenseURL, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify({
+            user_id: id,
+            item: item,
+            amount: amount
         })
     })
 }
@@ -173,23 +180,34 @@ fetch(articleURL)
     .then(showArticles)
 
 function showArticles(articles) {
-    const articleDiv = document.querySelector(".articles")
     articles.forEach(article => {
         const card = document.createElement("article")
         card.className = "article-card"
         const title = document.createElement("h3")
         const image = document.createElement("img")
-        image.onclick = function() {
-            window.location.href = `${article.url}`;
-          };
 
-        title.innerHTML = `<a href = "${article.url}" target = "_blank">${article.title}</a>`
-        image.src = article.image
-
+        showArticleOnClick(image, article)
+        articleCard(article, title, image)
         card.append(image, title)
-        articleDiv.append(card)
+        appendArticleCard(card)
     })
 
+}
+
+function showArticleOnClick(image, article) {
+    image.onclick = function() {
+        window.location.href = `${article.url}`;
+      };
+}
+
+function articleCard(article, title, image) {
+    title.innerHTML = `<a href = "${article.url}" target = "_blank">${article.title}</a>`
+    image.src = article.image
+}
+
+function appendArticleCard(card) {
+    articleDiv = document.querySelector(".articles")
+    articleDiv.append(card)    
 }
 
 function sumExpenses(user){
@@ -237,5 +255,5 @@ function clearExpensesEvent() {
 }
 
 function clearExpenses() {
-
+    fetch(`${userURL}/${id}`, { method: "DELETE" })
 }
