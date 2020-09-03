@@ -5,7 +5,6 @@ const articleURL = `${baseURL}/articles`
 let params = new URLSearchParams(window.location.search)
 let id = params.get('id')
 const totalExpensesDiv = document.querySelector(".total-expenses")
-// const divExpenses = document.getElementById("expense-list")
 const expenseForm = document.querySelector(".expenses")
 let chartData = []
 let data
@@ -15,16 +14,14 @@ fetch(`${userURL}/${id}`)
     .then(response => response.json())
     .then(user => {
         persistExpense(user)
-        if ((user.expenses)[0]) {
-            sumExpenses(user)
-        }else{
-            noTotalExpense()
-        }
+            if ((user.expenses)[0]) {
+                sumExpenses(user)
+            }else{
+                noTotalExpense()
+            }
         addChart(user)
     })
-
     .then(createExpense)
-    // .then(totalSpent)
 
 function noTotalExpense() {
     totalExpenseH3 = document.createElement("h3")
@@ -38,7 +35,6 @@ function createExpense(){
         const formData = new FormData(event.target)
         const expenseItem = formData.get("item")
         const expenseAmount = formData.get("amount")
-
         const divExpenses = document.getElementById("expense-list")
         const expenseListElement = document.createElement("p")
 
@@ -77,12 +73,10 @@ function updateExpensesBackend(item, amount) {
 }
 
 function persistExpense(user) {
-    // console.log("user:",user.expenses.item)
     user.expenses.forEach(expense => {
         const divExpenses = document.getElementById("expense-list")
         const expenseListElement = document.createElement("p")
         expenseListElement.innerText = `${expense.item}: $ ${expense.amount}`
-        console.log(expenseListElement)
         divExpenses.append(expenseListElement)
         data = [{
             x: `${expense.item}, value: ${expense.amount}`
@@ -98,21 +92,15 @@ function addChart(user) {
     })
 
     anychart.onDocumentReady(function () {
-        // set chart theme
     anychart.theme('pastel');
-            // create data set
             data = anychart.data.set(chartData)
     
-            // create pie chart with passed data
             let chart = anychart.pie(data);
 
-            // set chart radius
             chart
               .innerRadius('65%')
-              // set value for the exploded slices
               .explode(25);
     
-            // create standalone label and set settings
             let label = anychart.standalones.label();
             label
               .enabled(true)
@@ -127,23 +115,17 @@ function addChart(user) {
               .anchor('center')
               .hAlign('center')
               .vAlign('middle');
-    
-            // set label to center content of chart
+
             chart.center().content(label);
     
-            // create range color palette with color ranged
             let palette = anychart.palettes.rangeColors();
             palette.items([{ color: '#e5bbed' }, { color: '#ff6e40' }]);
-            // set chart palette
             chart.palette(palette);
     
-            // set hovered settings
             chart.hovered().fill('#6f3448');
     
-            // set selected settings
             chart.selected().fill('#ff6e40');
     
-            // set hovered outline settings
             chart
               .hovered()
               .outline()
@@ -151,8 +133,6 @@ function addChart(user) {
                 return anychart.color.lighten('#6f3448', 0.55);
               });
 
-    
-            // set selected outline settings
             chart
               .selected()
               .outline()
@@ -161,14 +141,11 @@ function addChart(user) {
                 return anychart.color.lighten('#ff6e40', 0.25);
               });
     
-            // set container id for the chart
             chart.container('container');
             document.getElementById("container").style.background="#fae2e6";
             
-            // initiate chart drawing
             chart.draw();
 
-            // Set chart background color
             chart.background("pink 0.001");
             document.getElementById("container").style.background="#fae2e6"
         
@@ -224,8 +201,6 @@ function showTotalExpenses() {
     totalExpenseH3.id = "total-expense-number"
     totalExpenseH3.innerText = `Total Expenses: $ ${expenseSum}`
     totalExpensesDiv.append(totalExpenseH3)
-
-    console.log(totalExpenseH3.innerText)
 }
 
 function logOut() {
@@ -235,7 +210,6 @@ function logOut() {
 
 function logOutRedirect() {
         window.location.href = "index.html"
-        // console.log("click")
 }
 
 clearExpensesOption()
@@ -255,5 +229,5 @@ function clearExpensesEvent() {
 }
 
 function clearExpenses() {
-    fetch(`${userURL}/${id}`, { method: "DELETE" })
+    fetch(userURL, { method: "DELETE" })
 }
