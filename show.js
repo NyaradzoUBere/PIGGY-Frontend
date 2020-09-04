@@ -23,6 +23,7 @@ fetch(`${userURL}/${id}`)
     })
     .then(createExpense)
 
+
 function noTotalExpense() {
     totalExpenseH3 = document.createElement("h3")
     totalExpenseH3.id = "total-expense-number"
@@ -49,6 +50,7 @@ function createExpense(){
         
         event.target.reset()
         updateExpensesBackend(expenseItem, expenseAmount)
+        
     })
 }
 
@@ -66,8 +68,8 @@ function updateExpensesBackend(item, amount) {
         },
         body: JSON.stringify({
             user_id: id,
-            item: item,
-            amount: amount
+            item,
+            amount
         })
     })
 }
@@ -149,7 +151,7 @@ function addChart(user) {
             chart.background("pink 0.001");
             document.getElementById("container").style.background="#fae2e6"
         
-          });
+        });
         }
 
 fetch(articleURL)
@@ -174,7 +176,7 @@ function showArticles(articles) {
 function showArticleOnClick(image, article) {
     image.onclick = function() {
         window.location.href = `${article.url}`;
-      };
+    };
 }
 
 function articleCard(article, title, image) {
@@ -223,11 +225,26 @@ function clearExpensesOption(){
     clearExpensesEvent()
 }
 
-function clearExpensesEvent() {
+function clearExpensesEvent(item, amount) {
     const clearExpensesListElement = document.querySelector("#clear-expenses")
     clearExpensesListElement.addEventListener("click", clearExpenses)
 }
 
+// function updateExpensesBackend(item, amount) {
+//     fetch(expenseURL, {
+//         method: "POST",
+//         headers: {
+//             "Content-Type": "application/json",
+//             "Accept": "application/json"
+//         },
+//         body: JSON.stringify({
+//             user_id: id,
+//             item: item,
+//             amount: amount
+//         })
+//     })
+// }
+
 function clearExpenses() {
-    fetch(userURL, { method: "DELETE" })
+    fetch(`${userURL}/${id}`, { method: "DELETE" })
 }
