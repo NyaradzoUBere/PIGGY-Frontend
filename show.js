@@ -226,7 +226,7 @@ function clearExpensesOption(){
     clearExpensesEvent()
 }
 
-function clearExpensesEvent(item, amount) {
+function clearExpensesEvent() {
     const clearExpensesListElement = document.querySelector("#clear-expenses")
     clearExpensesListElement.addEventListener("click", clearExpenses)
 }
