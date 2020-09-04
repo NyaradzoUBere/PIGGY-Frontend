@@ -34,22 +34,39 @@ HTML5 / CSS3
 ## Code Examples
 
 ```
-    Insert code here
+function persistExpense(user) {
+    user.expenses.forEach(expense => {
+        const divExpenses = document.getElementById("expense-list")
+        const expenseListElement = document.createElement("p")
+        expenseListElement.innerText = `${expense.item}: $ ${expense.amount}`
+        divExpenses.append(expenseListElement)
+        data = [{
+            x: `${expense.item}, value: ${expense.amount}`
+        }]
+    })
+}
 ```
 ```
-    Inser code here
+function sumExpenses(user){
+    expense_array = []
+    user.expenses.map(expense => {
+        (expense_array.push(expense.amount))
+    })
+    expenseSum = expense_array.reduce((total, amount) => total + amount);
+    showTotalExpenses()
+}
 ```
 ## Piggy Features
 * Input and track expenses
-* Visualize expenses through a colored pie chart
+* Visualize expenses through a colored donut chart
 * Provide finance and budgetting resources
 
 
 To-Do List:
-* 
+* Added expense breakdown option: labeling expense type
 
 ## Status
-<!-- Completed. -->
+Completed.
 
 This app is built to carry out the CRUD framework
 

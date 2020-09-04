@@ -25,7 +25,6 @@ function authentication(event) {
         })
     }).then(response => response.json())
         .then(result => {
-            console.log(result.token)
             localStorage.setItem("token", result.token)
             redirect(result)
         })
