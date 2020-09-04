@@ -50,7 +50,6 @@ function createExpense(){
         
         event.target.reset()
         updateExpensesBackend(expenseItem, expenseAmount)
-        
     })
 }
 
