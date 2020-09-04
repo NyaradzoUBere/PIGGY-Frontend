@@ -230,21 +230,6 @@ function clearExpensesEvent(item, amount) {
     clearExpensesListElement.addEventListener("click", clearExpenses)
 }
 
-// function updateExpensesBackend(item, amount) {
-//     fetch(expenseURL, {
-//         method: "POST",
-//         headers: {
-//             "Content-Type": "application/json",
-//             "Accept": "application/json"
-//         },
-//         body: JSON.stringify({
-//             user_id: id,
-//             item: item,
-//             amount: amount
-//         })
-//     })
-// }
-
 function clearExpenses() {
     fetch(`${userURL}/${id}`, { method: "DELETE" })
 }
