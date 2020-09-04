@@ -232,4 +232,5 @@ function clearExpensesEvent(item, amount) {
 
 function clearExpenses() {
     fetch(`${userURL}/${id}`, { method: "DELETE" })
+    location.reload()
 }
