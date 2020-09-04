@@ -4,10 +4,14 @@ const userURL = `${baseURL}/users`
 const articleURL = `${baseURL}/articles`
 let params = new URLSearchParams(window.location.search)
 let id = params.get('id')
+
 const totalExpensesDiv = document.querySelector(".total-expenses")
 const expenseForm = document.querySelector(".expenses")
+
 let chartData = []
 let data
+
+clearExpensesOption()
 logOut()
 
 fetch(`${userURL}/${id}`)
@@ -150,8 +154,8 @@ function addChart(user) {
             chart.background("pink 0.001");
             document.getElementById("container").style.background="#fae2e6"
         
-        });
-        }
+    });
+}
 
 fetch(articleURL)
     .then(response => response.json())
@@ -212,8 +216,6 @@ function logOut() {
 function logOutRedirect() {
         window.location.href = "index.html"
 }
-
-clearExpensesOption()
 
 function clearExpensesOption(){
     const nav = document.querySelector(".nav")
