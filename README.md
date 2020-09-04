@@ -4,12 +4,12 @@
 ## Table of Contents
 * [About](#about-piggy)
 * [Video](#piggy-walkthrough-video)
-* [Techonologies](#technologies)
+* [Technologies](#technologies)
 * [Setup](#setup)
 * [Code Examples](#code-examples)
 * [Features](#piggy-features)
 * [Status](#status)
-* [Why piggy](#why-piggy)
+* [Why Piggy](#why-piggy)
 * [Contact](#contact)
 * [License](#license)
 
@@ -29,7 +29,7 @@ HTML5 / CSS3
 ## Setup
 
 1. To run this project, please go to the [Piggy Backend repo:](https://github.com/NyaradzoUBere/Piggy-WebApp-Backend)
-1. Run ~ lite-server in your front end directory
+1. Run ~ lite-server in your front-end directory
 1. [Click here!](http://localhost:3001)
 
 ## Code Examples
@@ -64,7 +64,7 @@ function sumExpenses(user){
 
 
 To-Do List:
-* Added expense breakdown option: labeling expense type
+* Add expense breakdown option: labeling expense type
 
 ## Status
 Completed.
@@ -72,7 +72,7 @@ Completed.
 This app is built to carry out the CRUD framework
 
 ## Why Piggy?
-I created this app because of my personal affinity for finance. Being a recent graduate of both finance and accounting, I constantly think about the way I am breaking out my daily, weekly, and monthly income. This app serves to be a beginners resource for those just now thinking about how finance plays into their lives and ways to imporve financial habits.
+I created this app because of my personal affinity for finance. Being a recent graduate of both finance and accounting, I constantly think about the ways I am breaking out my daily, weekly, and monthly income. This app serves as a beginner's resource for those just now thinking about how finance plays into their lives and ways to improve financial habits.
 
 ## Contact
 Created by [Nyaradzo Bere](http://www.linkedin.com/in/nyaradzo-bere)
