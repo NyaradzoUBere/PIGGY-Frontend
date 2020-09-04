@@ -18,7 +18,7 @@ Piggy is an expense tracker for users. Users get some insight about what their "
 
 
 ## Piggy Walkthrough Video
-[Piggy Walkthrough]("https://www.youtube.com/watch?v=RGHFK_7I1lU&feature=youtu.be")
+[Piggy Walkthrough](https://www.youtube.com/watch?v=RGHFK_7I1lU&feature=youtu.be)
 
 ## Technologies
 JavaScript ES6
