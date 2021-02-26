@@ -16,8 +16,7 @@
 ## About Piggy
 Piggy is an expense tracker for users. Users get some insight about what their "piggy bank" is being spent on through a list breakdown of their expenses along with a chart breakdown of total expenses. Resources are also provided to the user to increase their financial literacy and budgetting habits.
 
-
-## Piggy Walkthrough Video
+## Piggy Walkthrough Videos
 [Piggy Walkthrough](https://www.youtube.com/watch?v=RGHFK_7I1lU&feature=youtu.be)
 
 ## Technologies
