@@ -73,7 +73,7 @@ This app is built to carry out the CRUD framework
 I created this app because of my personal affinity for finance. Being a recent graduate of both finance and accounting, I constantly think about the ways I am breaking out my daily, weekly, and monthly income. This app serves as a beginner's resource for those just now thinking about how finance plays into their lives and ways to improve financial habits.
 
 ## Contact
-Created by [Name](http://www.linkedin.com/in/nyaradzo-bere)
+Created by [Name](http://www.linkedin.com)
 
 ## License
 [View Here](License.txt)
